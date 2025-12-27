@@ -11,19 +11,19 @@ RUN mvn dependency:go-offline
 # Copy source code
 COPY src ./src
 
-# Build fat JAR with exact name
-RUN mvn clean package -DskipTests -DfinalName=fintrack
+# Build the JAR
+RUN mvn clean package -DskipTests
 
 # ----------- Runtime Stage -----------
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 
-# Set environment variables (optional defaults)
+# Optional env vars
 ENV SPRING_PROFILES_ACTIVE=prod
 ENV SERVER_PORT=8080
 
-# Copy built JAR from build stage
-COPY --from=build /app/target/fintrack.jar app.jar
+# Copy the Spring Boot JAR (repackaged executable)
+COPY --from=build /app/target/*-SNAPSHOT.jar app.jar
 
 # Expose the Spring Boot port
 EXPOSE 8080
