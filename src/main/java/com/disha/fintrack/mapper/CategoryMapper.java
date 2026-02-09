@@ -19,6 +19,7 @@ public class CategoryMapper implements MapperInterface<CategoryDTO, CategoryEnti
         dto.setProfileId(entity.getProfile() != null ? entity.getProfile().getId() : null);
         dto.setCreatedAt(entity.getCreatedAt());
         dto.setUpdatedAt(entity.getUpdatedAt());
+        dto.setIcon(entity.getIcon());
         return dto;
     }
 
@@ -33,6 +34,7 @@ public class CategoryMapper implements MapperInterface<CategoryDTO, CategoryEnti
         entity.setType(dto.getType());
         entity.setCreatedAt(dto.getCreatedAt());
         entity.setUpdatedAt(dto.getUpdatedAt());
+        entity.setIcon(dto.getIcon());
         return entity;
     }
 }

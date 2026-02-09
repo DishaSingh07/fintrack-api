@@ -45,8 +45,13 @@ public class JwtUtil {
         try {
             Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token);
             return true;
+        } catch (ExpiredJwtException e) {
+            // ✅ Explicit handling of expired tokens
+            System.out.println("Token expired at: " + e.getClaims().getExpiration());
+            return false;
         } catch (JwtException e) {
             return false;
         }
     }
+
 }

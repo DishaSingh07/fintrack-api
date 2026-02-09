@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public interface ExpenseService {
 
@@ -33,6 +34,18 @@ public interface ExpenseService {
 
 //    notification
     List<ExpenseDTO> getExpensesByDate(Long profileId, LocalDate date);
+
+    BigDecimal getCurrentMonthExpenseForCategory(Long categoryId);
+
+    BigDecimal getSumForMonth(int month, int year);
+
+    Map<String, Object> getExpenseBreakdown(int month, int year);
+
+    BigDecimal getTotalExpenseByCategoryForMonth(Long categoryId, Integer month, Integer year);
+
+    List<ExpenseDTO> getExpenseForMonth(int month, int year);
+
+
 
 }
 

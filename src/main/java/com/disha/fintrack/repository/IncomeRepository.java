@@ -2,6 +2,7 @@ package com.disha.fintrack.repository;
 
 import com.disha.fintrack.entity.IncomeEntity;
 import com.disha.fintrack.entity.IncomeEntity;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -33,6 +34,14 @@ public interface IncomeRepository extends JpaRepository<IncomeEntity, Long> {
     List<IncomeEntity> findByProfileIdAndDateBetweenAndNameContainingIgnoreCase(Long profileId, LocalDate startDate, LocalDate endDate, String keyword, Sort sort);
 
     List<IncomeEntity> findByProfileIdAndDateBetween(Long profileId, LocalDate startDate, LocalDate endDate);
+
+    @Query("""
+            SELECT COALESCE(SUM(e.amount), 0)
+            FROM IncomeEntity e
+            WHERE e.profile.id = :profileId
+              AND e.date BETWEEN :startDate AND :endDate
+            """)
+    BigDecimal sumIncomeBetweenDates(@Param("profileId") Long profileId, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
 
 }

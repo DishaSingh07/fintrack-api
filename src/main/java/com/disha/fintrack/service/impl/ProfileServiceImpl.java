@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.disha.fintrack.dto.JwtResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -116,7 +117,7 @@ public class ProfileServiceImpl implements ProfileService {
     public boolean activateProfile(String activationToken) {
         // Placeholder logic (real version uses token table or JWT)
         ProfileEntity entity = profileRepository.findByActivationToken(activationToken)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid activation token"));
+                .orElseThrow(() -> new IllegalArgumentException("Invalid or expired activation token"));
         entity.setIsActive(true);
         // entity.setActivationToken(null); // Clear token after activation
         profileRepository.save(entity);
@@ -157,20 +158,25 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public JwtResponse authenticateAndGenerateToken(AuthDTO authDTO) {
         try {
-            authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(authDTO.getEmail(), authDTO.getPassword()));
-            // generate JWT token
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authDTO.getEmail(), authDTO.getPassword())
+            );
+
             String token = jwtUtil.generateToken(authDTO.getEmail());
+
             return JwtResponse.builder()
                     .token(token)
                     .tokenType("Bearer")
                     .message("Authentication successful")
                     .user(getPublicProfile(authDTO.getEmail()))
                     .build();
-        } catch (org.springframework.security.authentication.BadCredentialsException e) {
-            throw e;
+
+        } catch (BadCredentialsException e) {
+            throw new BadCredentialsException("Invalid email or password");
         } catch (Exception e) {
-            throw new org.springframework.security.authentication.BadCredentialsException("Invalid email or password");
+            // ✅ Don’t mask all exceptions as BadCredentials
+            throw new RuntimeException("Authentication failed due to server error", e);
         }
     }
+
 }

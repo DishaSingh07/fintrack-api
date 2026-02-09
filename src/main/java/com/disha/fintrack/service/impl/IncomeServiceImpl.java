@@ -10,12 +10,15 @@ import com.disha.fintrack.repository.CategoryRepository;
 import com.disha.fintrack.repository.IncomeRepository;
 import com.disha.fintrack.service.IncomeService;
 import com.disha.fintrack.service.ProfileService;
+import com.disha.fintrack.util.MonthDateMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -118,6 +121,12 @@ public class IncomeServiceImpl implements IncomeService {
     }
 
     @Override
+    public BigDecimal getTotalIncomeForCurrentMonthForCurrentUser() {
+        return null;
+    }
+
+
+    @Override
     public List<IncomeDTO> getFiveLatestIncome() {
         ProfileEntity profile = profileService.getCurrentProfile();
         return incomeRepository.findTop5ByProfileIdOrderByDateDesc(profile.getId())
@@ -142,6 +151,32 @@ public class IncomeServiceImpl implements IncomeService {
                         endDate,
                         keyword,
                         sort)
+                .stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+
+    @Override
+    public BigDecimal getTotalIncomeForMonth(int month, int year) {
+
+        LocalDate [] dates = MonthDateMapper.getStartAndEndDate(month, year);
+        LocalDate startDate = dates[0];
+        LocalDate endDate = dates[1];
+        Long profileId = profileService.getCurrentProfile().getId();
+
+
+        return incomeRepository.sumIncomeBetweenDates(profileId, startDate, endDate);
+    }
+
+    @Override
+    public List<IncomeDTO> getIncomeForMonth(int month, int year) {
+        LocalDate [] dates = MonthDateMapper.getStartAndEndDate(month, year);
+        LocalDate startDate = dates[0];
+        LocalDate endDate = dates[1];
+        Long profileId = profileService.getCurrentProfile().getId();
+
+        return incomeRepository.findByProfileIdAndDateBetween(profileId, startDate, endDate)
                 .stream()
                 .map(mapper::toDto)
                 .collect(Collectors.toList());

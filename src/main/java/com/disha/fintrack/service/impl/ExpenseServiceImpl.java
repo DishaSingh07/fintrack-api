@@ -1,5 +1,6 @@
 package com.disha.fintrack.service.impl;
 
+import com.disha.fintrack.dto.ExpenseBreakdownItem;
 import com.disha.fintrack.dto.ExpenseDTO;
 import com.disha.fintrack.dto.IncomeDTO;
 import com.disha.fintrack.entity.CategoryEntity;
@@ -10,14 +11,20 @@ import com.disha.fintrack.repository.CategoryRepository;
 import com.disha.fintrack.repository.ExpenseRepository;
 import com.disha.fintrack.service.ExpenseService;
 import com.disha.fintrack.service.ProfileService;
+import com.disha.fintrack.util.CategoryColorUtil;
+import com.disha.fintrack.util.MonthDateMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
@@ -88,7 +95,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public void deleteExpense(Long id) {
-//        ensure the expense exists for the current user
+        // ensure the expense exists for the current user
         ProfileEntity profile = profileService.getCurrentProfile();
         ExpenseEntity expense = expenseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Expense not found"));
@@ -141,8 +148,7 @@ public class ExpenseServiceImpl implements ExpenseService {
                         startDate,
                         endDate,
                         keyword,
-                        sort
-                )
+                        sort)
                 .stream()
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
@@ -155,4 +161,100 @@ public class ExpenseServiceImpl implements ExpenseService {
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    //    sum of expenses for a particular category id for the current month for the current user
+    @Override
+    public BigDecimal getCurrentMonthExpenseForCategory(Long categoryId) {
+        ProfileEntity profile = profileService.getCurrentProfile();
+
+        LocalDate now = LocalDate.now();
+        LocalDate startDate = now.withDayOfMonth(1);
+        LocalDate endDate = now.withDayOfMonth(now.lengthOfMonth());
+        return expenseRepository.findTotalExpenseForCategoryInMonth(
+                profile.getId(),
+                categoryId,
+                startDate,
+                endDate
+        );
+    }
+
+    @Override
+    public BigDecimal getSumForMonth(int month, int year) {
+        Long profileId = profileService.getCurrentProfile().getId();
+        LocalDate startDate = MonthDateMapper.getStartAndEndDate(month, year)[0];
+        LocalDate endDate = MonthDateMapper.getStartAndEndDate(month, year)[1];
+
+        return expenseRepository.sumExpenseBetweenDates(profileId, startDate, endDate);
+    }
+
+    public Map<String, Object> getExpenseBreakdown(int month, int year) {
+
+        Long profileId = profileService.getCurrentProfile().getId();
+
+        LocalDate startDate = MonthDateMapper.getStartAndEndDate(month, year)[0];
+        LocalDate endDate = MonthDateMapper.getStartAndEndDate(month, year)[1];
+
+        List<Object[]> rows =
+                expenseRepository.getExpenseBreakdown(profileId, startDate, endDate);
+
+        BigDecimal total = rows.stream()
+                .map(r -> (BigDecimal) r[3])
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        List<ExpenseBreakdownItem> items = IntStream.range(0, rows.size())
+                .mapToObj(i -> {
+                    Object[] r = rows.get(i);
+                    BigDecimal amount = (BigDecimal) r[3];
+
+                    double percentage = total.compareTo(BigDecimal.ZERO) == 0
+                            ? 0.0
+                            : amount.multiply(BigDecimal.valueOf(100))
+                            .divide(total, 2, RoundingMode.HALF_UP)
+                            .doubleValue();
+
+                    return ExpenseBreakdownItem.builder()
+                            .categoryId((Long) r[0])
+                            .categoryName((String) r[1])
+                            .icon((String) r[2])
+                            .color(CategoryColorUtil.getColor(i))
+                            .amount(amount)
+                            .percentage(percentage)
+                            .build();
+                })
+                .toList();
+
+        return Map.of(
+                "items", items,
+                "total", total
+        );
+    }
+
+    public BigDecimal getTotalExpenseByCategoryForMonth(Long categoryId, Integer month, Integer year) {
+        ProfileEntity profile = profileService.getCurrentProfile();
+
+        LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+
+        BigDecimal total = expenseRepository.findTotalExpenseForCategoryInMonth(
+                profile.getId(),
+                categoryId,
+                startDate,
+                endDate
+        );
+        return total != null ? total : BigDecimal.ZERO;
+    }
+
+    @Override
+    public List<ExpenseDTO> getExpenseForMonth(int month, int year) {
+        ProfileEntity profile = profileService.getCurrentProfile();
+        LocalDate[] dates = MonthDateMapper.getStartAndEndDate(month, year);
+        LocalDate startDate = dates[0];
+        LocalDate endDate = dates[1];
+        return expenseRepository.findByProfileIdAndDateBetween(profile.getId(), startDate, endDate)
+                .stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+
 }

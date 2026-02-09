@@ -1,26 +1,24 @@
 package com.disha.fintrack.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RecentTransactionDTO {
+@Builder
+public class TransactionDTO {
     private Long id;
-    private Long profileId;
-    private String name;
-    private String icon;
-    private BigDecimal amount;
+    private Long userId;
     private LocalDate date;
+    private BigDecimal amount;
+    private String category;
+    private String title;
+    private String type;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String type;
+
 }
