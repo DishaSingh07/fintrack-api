@@ -32,6 +32,12 @@ build/
 ### VS Code ###
 .vscode/
 
-#environment variables file
+### Environment variables file ###
 .env
 .env.*
+
+### Documentation files (local only) ###
+*.md
+
+### Application logs ###
+*.log

@@ -131,6 +131,12 @@
             <artifactId>flyway-core</artifactId>
         </dependency>
 
+        <!-- Flyway PostgreSQL support -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-postgresql</artifactId>
+        </dependency>
+
         <!-- Flyway MySQL support -->
         <dependency>
             <groupId>org.flywaydb</groupId>
