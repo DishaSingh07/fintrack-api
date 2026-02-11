@@ -129,18 +129,21 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-        </dependency>
-
-        <!-- Flyway PostgreSQL support -->
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-postgresql</artifactId>
+            <version>10.20.0</version>
         </dependency>
 
         <!-- Flyway MySQL support -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-mysql</artifactId>
+            <version>10.20.0</version>
+        </dependency>
+
+        <!-- Flyway PostgreSQL support -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-postgresql</artifactId>
+            <version>10.20.0</version>
         </dependency>
 
         <!-- Validation API -->
