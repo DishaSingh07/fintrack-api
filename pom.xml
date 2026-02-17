@@ -142,8 +142,7 @@
         <!-- Flyway PostgreSQL support -->
         <dependency>
             <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-postgresql</artifactId>
-            <version>10.20.0</version>
+            <artifactId>flyway-database-postgresql</artifactId>
         </dependency>
 
         <!-- Validation API -->
