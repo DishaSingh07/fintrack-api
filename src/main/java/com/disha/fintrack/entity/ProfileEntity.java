@@ -51,7 +51,7 @@ public class ProfileEntity {
 
     @PrePersist
     protected void onCreate() {
-        isActive = false;
+        isActive = true;
     }
 
     @PreUpdate
