@@ -3,6 +3,8 @@ package com.disha.fintrack.controller;
 import java.util.Map;
 
 import com.disha.fintrack.common.ApiResponse;
+import com.disha.fintrack.dto.AuthDTO;
+import com.disha.fintrack.dto.JwtResponse;
 import com.disha.fintrack.dto.ProfileDTO;
 import com.disha.fintrack.entity.ProfileEntity;
 import com.disha.fintrack.mapper.ProfileMapper;
@@ -27,10 +29,15 @@ public class ProfileController {
     private final ProfileMapper profileMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<ProfileDTO>> registerProfile(@RequestBody ProfileDTO profileDTO) {
+    public ResponseEntity<ApiResponse<Object>> registerProfile(@RequestBody ProfileDTO profileDTO) {
         ProfileDTO createdProfile = profileService.registerProfile(profileDTO);
+        JwtResponse jwt = profileService.authenticateAndGenerateToken(new AuthDTO(profileDTO.getEmail(), profileDTO.getPassword()));
+        Object data = Map.of(
+                "user", createdProfile,
+                "token", jwt.getToken()
+        );
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success(createdProfile, "Profile registered successfully"));
+                .body(ApiResponse.success(data, "Profile registered successfully"));
     }
 
     @GetMapping("/activate")
