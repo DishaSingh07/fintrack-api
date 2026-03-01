@@ -3,9 +3,8 @@ cors:
   allowed-origins:
     - http://localhost:3000
     - http://localhost:5173
+    - https://fintrack-frontend-phi.vercel.app
     # Add staging/prod as needed
-    - https://app.staging.fintrack.com
-    - https://app.fintrack.com
   allowed-methods:
     - GET
     - POST
