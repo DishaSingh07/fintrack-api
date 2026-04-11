@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,10 @@ public class DashboardService {
         ProfileEntity profile = profileService.getCurrentProfile();
         Map<String, Object> returnValue = new LinkedHashMap<>();
 //        List<ExpenseDTO> latestExpenses = expenseService.getFiveLatestExpense();
-//        List<IncomeDTO> latestIncomes = incomeService.getFiveLatestIncome();
-        BigDecimal totalExpenses = expenseService.getTotalExpenseForCurrentUser();
-        BigDecimal totalIncomes = incomeService.getTotalIncomeForCurrentUser();
+//        List<IncomeDTO> latestIncomes = incomeService.getFiveLatestIncome()
+//        ;
+        BigDecimal totalExpenses = transactionService.getTotalTransactionByDates(null, LocalDate.now(), "EXPENSE");
+        BigDecimal totalIncomes = transactionService.getTotalTransactionByDates(null, LocalDate.now(), "INCOME");
 
         // putting latest expenses and incomes in transactins
         List<TransactionDTO> recentTransactions = transactionService.getRecentTransactions();
@@ -49,10 +51,20 @@ public class DashboardService {
     public Map<String, Object> getProfileSummary() {
         ProfileEntity profile = profileService.getCurrentProfile();
         Map<String, Object> returnValue = new LinkedHashMap<>();
-        List<ExpenseDTO> latestExpenses = expenseService.getFiveLatestExpense();
-        List<IncomeDTO> latestIncomes = incomeService.getFiveLatestIncome();
-        BigDecimal totalExpenses = expenseService.getTotalExpenseForCurrentUser();
-        BigDecimal totalIncomes = incomeService.getTotalIncomeForCurrentUser();
+
+        List<TransactionDTO> latestExpenses = transactionService.getRecentTransactions().stream()
+                .filter(t -> t.getType().equalsIgnoreCase("EXPENSE"))
+                .limit(5)
+                .toList();
+
+        List<TransactionDTO> latestIncomes = transactionService.getRecentTransactions().stream()
+                .filter(t -> t.getType().equalsIgnoreCase("INCOME"))
+                .limit(5)
+                .toList();
+
+
+        BigDecimal totalExpenses = transactionService.getTotalTransactionByDates(null, LocalDate.now(), "EXPENSE");
+        BigDecimal totalIncomes = transactionService.getTotalTransactionByDates(null, LocalDate.now(), "INCOME");
 
         returnValue.put("totalIncomes", totalIncomes);
         returnValue.put("totalExpense", totalExpenses);

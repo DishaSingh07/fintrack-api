@@ -16,9 +16,8 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class ReportService {
 
-    private final IncomeService incomeService;
-    private final ExpenseService expenseService;
     private final ProfileService profileService;
+    private final TransactionService transactionService;
 
     public List<TrendDTO> getMonthlyTrends(int months) {
 
@@ -33,10 +32,10 @@ public class ReportService {
             int year = date.getYear();
 
             BigDecimal income =
-                    incomeService.getTotalIncomeForMonth(month, year);
+                    transactionService.getTotalTransactionForMonth(month, year, "INCOME");
 
-            BigDecimal expense =
-                    expenseService.getSumForMonth(month, year);
+                BigDecimal expense =
+                    transactionService.getTotalTransactionForMonth(month, year, "EXPENSE");
 
             double savingRate = calculateSavingRate(income, expense);
 

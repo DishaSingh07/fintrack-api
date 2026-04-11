@@ -17,14 +17,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SummaryService {
 
-    private final IncomeService incomeService;
-    private final ExpenseService expenseService;
     private final FilterService filterService;
+    private final TransactionService transactionService;
 
     public SummaryResposne generateMonthlySummary(int month, int year) {
 
-        BigDecimal totalIncome = incomeService.getTotalIncomeForMonth(month, year);
-        BigDecimal totalExpense = expenseService.getSumForMonth(month, year);
+
+        BigDecimal totalIncome = transactionService.getTotalTransactionForMonth(month, year, "INCOME");
+        BigDecimal totalExpense = transactionService.getTotalTransactionForMonth(month, year, "EXPENSE");
         BigDecimal balance = totalIncome.subtract(totalExpense);
 
         LocalDate startDate = MonthDateMapper.getStartAndEndDate(month, year)[0];
@@ -33,20 +33,20 @@ public class SummaryService {
         int previousMonth = (month == 1) ? 12 : month - 1;
         int previousYear = (month == 1) ? year - 1 : year;
 
-        BigDecimal previousMonthIncome = incomeService.getTotalIncomeForMonth(previousMonth, previousYear);
-        BigDecimal previousMonthExpense = expenseService.getSumForMonth(previousMonth, previousYear);
+        BigDecimal previousMonthIncome = transactionService.getTotalTransactionForMonth(month, year, "INCOME");
+        BigDecimal previousMonthExpense = transactionService.getTotalTransactionForMonth(month, year, "EXPENSE");
 
         double incomeTrend = calculateTrend(previousMonthIncome, totalIncome);
         double expenseTrend = calculateTrend(previousMonthExpense, totalExpense);
 
         // ✅ Now we get typed lists
-        List<IncomeDTO> incomeList = filterService.filterIncomes(startDate, endDate, "", Sort.by(Sort.Direction.DESC, "amount"));
+        List<TransactionDTO> incomeList = filterService.filterIncomes(startDate, endDate, "", Sort.by(Sort.Direction.DESC, "amount"));
         if (incomeList.isEmpty()) {
             log.info("no income in the transactions found");
         }
         CategorySummary topIncomeCategory = extractTopIncomeCategory(incomeList);
 
-        List<ExpenseDTO> expenseList = filterService.filterExpenses(startDate, endDate, "", Sort.by(Sort.Direction.DESC, "amount"));
+        List<TransactionDTO> expenseList = filterService.filterExpenses(startDate, endDate, "", Sort.by(Sort.Direction.DESC, "amount"));
         if (expenseList.isEmpty()) {
             log.info("no expense in the transactions found");
         }
@@ -66,19 +66,19 @@ public class SummaryService {
                 .build();
     }
 
-    private CategorySummary extractTopIncomeCategory(List<IncomeDTO> incomes) {
+    private CategorySummary extractTopIncomeCategory(List<TransactionDTO> incomes) {
         if (incomes.isEmpty()) {
             return new CategorySummary("N/A", 0.0);
         }
-        IncomeDTO top = incomes.get(0);
+        TransactionDTO top = incomes.get(0);
         return new CategorySummary(top.getName(), top.getAmount().doubleValue());
     }
 
-    private CategorySummary extractTopExpenseCategory(List<ExpenseDTO> expenses) {
+    private CategorySummary extractTopExpenseCategory(List<TransactionDTO> expenses) {
         if (expenses.isEmpty()) {
             return new CategorySummary("N/A", 0.0);
         }
-        ExpenseDTO top = expenses.get(0);
+        TransactionDTO top = expenses.get(0);
         return new CategorySummary(top.getName(), top.getAmount().doubleValue());
     }
 

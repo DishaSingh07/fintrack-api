@@ -17,15 +17,14 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class FilterService {
 
-    private final IncomeService incomeService;
-    private final ExpenseService expenseService;
+    private final TransactionService transactionService;
 
-    public List<IncomeDTO> filterIncomes(LocalDate startDate, LocalDate endDate, String keyword, Sort sort) {
-        return incomeService.filterIncomes(startDate, endDate, keyword, sort);
+    public List<TransactionDTO> filterIncomes(LocalDate startDate, LocalDate endDate, String keyword, Sort sort) {
+        return transactionService.filterTransactions(startDate, endDate, keyword, sort, "INCOME");
     }
 
-    public List<ExpenseDTO> filterExpenses(LocalDate startDate, LocalDate endDate, String keyword, Sort sort) {
-        return expenseService.filterExpenses(startDate, endDate, keyword, sort);
+    public List<TransactionDTO> filterExpenses(LocalDate startDate, LocalDate endDate, String keyword, Sort sort) {
+        return transactionService.filterTransactions(startDate, endDate, keyword, sort, "EXPENSE");
     }
 
     public Object filterTransactions(FilterDTO filter) {

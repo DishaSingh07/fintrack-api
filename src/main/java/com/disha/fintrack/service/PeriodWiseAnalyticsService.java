@@ -15,8 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PeriodWiseAnalyticsService {
 
-    private final IncomeService incomeService;
-    private final ExpenseService expenseService;
+    private final TransactionService transactionService;
 
     public List<ChartData> getPeriodWiseAnalytics(Period period) {
         log.info("Generating period-wise analytics for period: {}", period);
@@ -28,12 +27,10 @@ public class PeriodWiseAnalyticsService {
             LocalDate startDate = LocalDate.of(period.getYear(), period.getMonth(), (week - 1) * 7 + 1);
             LocalDate endDate = startDate.plusDays(6);
             log.info("Week {} start date: {}, end date: {}", week, startDate, endDate);
-            Double income = incomeService.filterIncomes(startDate, endDate, "", null).stream()
-                    .mapToDouble(incomeDTO -> incomeDTO.getAmount().doubleValue())
-                    .sum();
-            Double expense = expenseService.filterExpenses(startDate, endDate, "", null).stream()
-                    .mapToDouble(expenseDTO -> expenseDTO.getAmount().doubleValue())
-                    .sum();
+
+                Double income = transactionService.getTotalTransactionByDates(startDate, endDate, "INCOME").doubleValue();
+                Double expense = transactionService.getTotalTransactionByDates(startDate, endDate, "EXPENSE").doubleValue();
+
             log.info("Week {} income: {}, expense: {}", week, income, expense);
             Double balance = income - expense;
             ChartData chartData = ChartData.builder()

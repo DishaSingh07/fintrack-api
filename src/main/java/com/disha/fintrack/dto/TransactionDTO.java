@@ -16,8 +16,9 @@ public class TransactionDTO {
     private LocalDate date;
     private BigDecimal amount;
     private String category;
-    private String title;
+    private String name;
     private String type;
+    private String icon;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

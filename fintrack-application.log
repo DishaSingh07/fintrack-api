@@ -1,121 +1,40 @@
-2026-03-01T11:44:39.140+05:30  WARN 12168 --- [fintrack] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11h55m48s427ms374µs400ns).
-2026-03-01T11:46:17.964+05:30  WARN 12168 --- [fintrack] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m40s299ms745µs600ns).
-2026-03-01T11:46:52.549+05:30  INFO 12168 --- [fintrack] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-01T11:46:53.265+05:30  INFO 12168 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-01T11:46:54.086+05:30  INFO 12168 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-01T16:57:27.081+05:30  INFO 24548 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : Starting FintrackApplication using Java 21.0.9 with PID 24548 (E:\Java\fintrack project\fintrack test\target\classes started by Disha Singh in E:\Java\fintrack project\fintrack test)
-2026-03-01T16:57:27.085+05:30  INFO 24548 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : No active profile set, falling back to 1 default profile: "default"
-2026-03-01T16:57:29.459+05:30  INFO 24548 --- [fintrack] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-01T16:57:29.726+05:30  INFO 24548 --- [fintrack] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 243 ms. Found 5 JPA repository interfaces.
-2026-03-01T16:57:32.449+05:30  INFO 24548 --- [fintrack] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-03-01T16:57:32.497+05:30  INFO 24548 --- [fintrack] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-01T16:57:32.498+05:30  INFO 24548 --- [fintrack] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2026-03-01T16:57:32.664+05:30  INFO 24548 --- [fintrack] [main] o.a.c.c.C.[.[localhost].[/api/v1.0]      : Initializing Spring embedded WebApplicationContext
-2026-03-01T16:57:32.664+05:30  INFO 24548 --- [fintrack] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5500 ms
-2026-03-01T16:57:33.217+05:30  INFO 24548 --- [fintrack] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-01T16:57:33.408+05:30  INFO 24548 --- [fintrack] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-03-01T16:57:33.522+05:30  INFO 24548 --- [fintrack] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-01T16:57:34.166+05:30  INFO 24548 --- [fintrack] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-01T16:57:34.233+05:30  INFO 24548 --- [fintrack] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-01T16:57:34.794+05:30  INFO 24548 --- [fintrack] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75b363c3
-2026-03-01T16:57:34.801+05:30  INFO 24548 --- [fintrack] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-01T16:57:34.966+05:30  WARN 24548 --- [fintrack] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-01T16:57:36.812+05:30  INFO 24548 --- [fintrack] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-01T16:57:37.105+05:30  INFO 24548 --- [fintrack] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-01T16:57:39.831+05:30  INFO 24548 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : ===== MAIL CONFIG CHECK =====
-2026-03-01T16:57:39.832+05:30  INFO 24548 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.username = 9e7973001@smtp-brevo.com
-2026-03-01T16:57:39.832+05:30  INFO 24548 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.password = ******
-2026-03-01T16:57:39.832+05:30  INFO 24548 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.properties.mail.smtp.from = dishumau@gmail.com
-2026-03-01T16:57:39.832+05:30  INFO 24548 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : =============================
-2026-03-01T16:57:39.918+05:30  INFO 24548 --- [fintrack] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name appUserDetailsService
-2026-03-01T16:57:40.231+05:30  INFO 24548 --- [fintrack] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-03-01T16:57:42.675+05:30  WARN 24548 --- [fintrack] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-01T16:57:44.254+05:30  INFO 24548 --- [fintrack] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api/v1.0'
-2026-03-01T16:57:44.285+05:30  INFO 24548 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : Started FintrackApplication in 18.277 seconds (process running for 19.512)
-2026-03-01T16:57:46.818+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/api/v1.0]      : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-01T16:57:46.818+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-01T16:57:46.823+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-03-01T16:57:51.251+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Generating period-wise analytics for period: com.disha.fintrack.dto.Period@b9d2ea4
-2026-03-01T16:57:51.254+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 1 of period com.disha.fintrack.dto.Period@b9d2ea4
-2026-03-01T16:57:51.255+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 1 start date: 2026-03-01, end date: 2026-03-07
-2026-03-01T16:57:51.372+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 1 income: 0.0, expense: 0.0
-2026-03-01T16:57:51.375+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 2 of period com.disha.fintrack.dto.Period@b9d2ea4
-2026-03-01T16:57:51.376+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 2 start date: 2026-03-08, end date: 2026-03-14
-2026-03-01T16:57:51.397+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 2 income: 0.0, expense: 0.0
-2026-03-01T16:57:51.397+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 3 of period com.disha.fintrack.dto.Period@b9d2ea4
-2026-03-01T16:57:51.398+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 3 start date: 2026-03-15, end date: 2026-03-21
-2026-03-01T16:57:51.420+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 3 income: 0.0, expense: 0.0
-2026-03-01T16:57:51.420+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 4 of period com.disha.fintrack.dto.Period@b9d2ea4
-2026-03-01T16:57:51.420+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 4 start date: 2026-03-22, end date: 2026-03-28
-2026-03-01T16:57:51.448+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 4 income: 0.0, expense: 0.0
-2026-03-01T16:58:00.771+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Generating period-wise analytics for period: com.disha.fintrack.dto.Period@84abb74
-2026-03-01T16:58:00.772+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 1 of period com.disha.fintrack.dto.Period@84abb74
-2026-03-01T16:58:00.772+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 1 start date: 2026-02-01, end date: 2026-02-07
-2026-03-01T16:58:00.805+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 1 income: 100000.0, expense: 10.0
-2026-03-01T16:58:00.805+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 2 of period com.disha.fintrack.dto.Period@84abb74
-2026-03-01T16:58:00.805+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 2 start date: 2026-02-08, end date: 2026-02-14
-2026-03-01T16:58:00.827+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 2 income: 0.0, expense: 0.0
-2026-03-01T16:58:00.827+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 3 of period com.disha.fintrack.dto.Period@84abb74
-2026-03-01T16:58:00.827+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 3 start date: 2026-02-15, end date: 2026-02-21
-2026-03-01T16:58:00.849+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 3 income: 0.0, expense: 0.0
-2026-03-01T16:58:00.850+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 4 of period com.disha.fintrack.dto.Period@84abb74
-2026-03-01T16:58:00.850+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 4 start date: 2026-02-22, end date: 2026-02-28
-2026-03-01T16:58:00.878+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-4] c.d.f.s.PeriodWiseAnalyticsService       : Week 4 income: 0.0, expense: 0.0
-2026-03-01T16:58:03.839+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Generating period-wise analytics for period: com.disha.fintrack.dto.Period@590c6b8
-2026-03-01T16:58:03.839+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 1 of period com.disha.fintrack.dto.Period@590c6b8
-2026-03-01T16:58:03.839+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 1 start date: 2026-01-01, end date: 2026-01-07
-2026-03-01T16:58:03.858+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 1 income: 0.0, expense: 0.0
-2026-03-01T16:58:03.858+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 2 of period com.disha.fintrack.dto.Period@590c6b8
-2026-03-01T16:58:03.858+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 2 start date: 2026-01-08, end date: 2026-01-14
-2026-03-01T16:58:03.876+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 2 income: 0.0, expense: 0.0
-2026-03-01T16:58:03.876+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 3 of period com.disha.fintrack.dto.Period@590c6b8
-2026-03-01T16:58:03.876+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 3 start date: 2026-01-15, end date: 2026-01-21
-2026-03-01T16:58:03.906+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 3 income: 0.0, expense: 0.0
-2026-03-01T16:58:03.906+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Processing week 4 of period com.disha.fintrack.dto.Period@590c6b8
-2026-03-01T16:58:03.906+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 4 start date: 2026-01-22, end date: 2026-01-28
-2026-03-01T16:58:03.925+05:30  INFO 24548 --- [fintrack] [http-nio-8080-exec-9] c.d.f.s.PeriodWiseAnalyticsService       : Week 4 income: 0.0, expense: 0.0
-2026-03-01T17:26:22.993+05:30  INFO 24548 --- [fintrack] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-01T17:26:23.074+05:30  INFO 24548 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-01T17:26:23.156+05:30  INFO 24548 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-01T19:35:39.401+05:30  INFO 13364 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : Starting FintrackApplication using Java 21.0.9 with PID 13364 (E:\Java\fintrack project\fintrack test\target\classes started by Disha Singh in E:\Java\fintrack project\fintrack test)
-2026-03-01T19:35:39.413+05:30  INFO 13364 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : No active profile set, falling back to 1 default profile: "default"
-2026-03-01T19:35:45.535+05:30  INFO 13364 --- [fintrack] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-01T19:35:46.091+05:30  INFO 13364 --- [fintrack] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 503 ms. Found 5 JPA repository interfaces.
-2026-03-01T19:35:50.885+05:30  INFO 13364 --- [fintrack] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-03-01T19:35:50.964+05:30  INFO 13364 --- [fintrack] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-01T19:35:50.965+05:30  INFO 13364 --- [fintrack] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2026-03-01T19:35:51.376+05:30  INFO 13364 --- [fintrack] [main] o.a.c.c.C.[.[localhost].[/api/v1.0]      : Initializing Spring embedded WebApplicationContext
-2026-03-01T19:35:51.378+05:30  INFO 13364 --- [fintrack] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11617 ms
-2026-03-01T19:35:52.130+05:30  INFO 13364 --- [fintrack] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-01T19:35:52.490+05:30  INFO 13364 --- [fintrack] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2026-03-01T19:35:52.745+05:30  INFO 13364 --- [fintrack] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-01T19:35:54.416+05:30  INFO 13364 --- [fintrack] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-01T19:35:54.606+05:30  INFO 13364 --- [fintrack] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-01T19:35:55.418+05:30  INFO 13364 --- [fintrack] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2abedbbd
-2026-03-01T19:35:55.427+05:30  INFO 13364 --- [fintrack] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-01T19:35:55.688+05:30  WARN 13364 --- [fintrack] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-01T19:36:01.820+05:30  INFO 13364 --- [fintrack] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-01T19:36:02.577+05:30  INFO 13364 --- [fintrack] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-01T19:36:04.166+05:30  INFO 13364 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : ===== MAIL CONFIG CHECK =====
-2026-03-01T19:36:04.167+05:30  INFO 13364 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.username = 9e7973001@smtp-brevo.com
-2026-03-01T19:36:04.167+05:30  INFO 13364 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.password = ******
-2026-03-01T19:36:04.168+05:30  INFO 13364 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.properties.mail.smtp.from = dishumau@gmail.com
-2026-03-01T19:36:04.168+05:30  INFO 13364 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : =============================
-2026-03-01T19:36:04.298+05:30  INFO 13364 --- [fintrack] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name appUserDetailsService
-2026-03-01T19:36:04.855+05:30  INFO 13364 --- [fintrack] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-03-01T19:36:11.290+05:30  WARN 13364 --- [fintrack] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-01T19:36:14.518+05:30  INFO 13364 --- [fintrack] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api/v1.0'
-2026-03-01T19:36:14.606+05:30  INFO 13364 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : Started FintrackApplication in 40.427 seconds (process running for 43.118)
-2026-03-01T19:38:41.802+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/api/v1.0]      : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-01T19:38:41.820+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-01T19:38:41.960+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 137 ms
-2026-03-01T19:38:44.130+05:30  WARN 13364 --- [fintrack] [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1048, SQLState: 23000
-2026-03-01T19:38:44.134+05:30 ERROR 13364 --- [fintrack] [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column 'full_name' cannot be null
-2026-03-01T19:54:41.625+05:30  WARN 13364 --- [fintrack] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m15s533ms496µs800ns).
-2026-03-01T19:55:40.303+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-3] c.disha.fintrack.service.EmailService    : Attempting to send email to testing11@gmail.com
-2026-03-01T19:55:43.011+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-3] c.disha.fintrack.service.EmailService    : Email SENT successfully to testing11@gmail.com
-2026-03-01T20:07:57.146+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-5] c.disha.fintrack.service.EmailService    : Attempting to send email to ass@gmail.com
-2026-03-01T20:07:58.403+05:30  INFO 13364 --- [fintrack] [http-nio-8080-exec-5] c.disha.fintrack.service.EmailService    : Email SENT successfully to ass@gmail.com
-2026-03-01T20:15:07.524+05:30  INFO 13364 --- [fintrack] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-01T20:15:07.650+05:30  INFO 13364 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-01T20:15:07.692+05:30  INFO 13364 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-04-11T10:49:23.008+05:30  INFO 2668 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : Starting FintrackApplication using Java 21.0.9 with PID 2668 (E:\Java\fintrack project\fintrack test\target\classes started by Disha Singh in E:\Java\fintrack project\fintrack test)
+2026-04-11T10:49:23.028+05:30  INFO 2668 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T10:49:29.313+05:30  INFO 2668 --- [fintrack] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-11T10:49:29.797+05:30  INFO 2668 --- [fintrack] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 460 ms. Found 6 JPA repository interfaces.
+2026-04-11T10:49:32.365+05:30  INFO 2668 --- [fintrack] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-11T10:49:32.399+05:30  INFO 2668 --- [fintrack] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-11T10:49:32.400+05:30  INFO 2668 --- [fintrack] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-04-11T10:49:32.591+05:30  INFO 2668 --- [fintrack] [main] o.a.c.c.C.[.[localhost].[/api/v1.0]      : Initializing Spring embedded WebApplicationContext
+2026-04-11T10:49:32.592+05:30  INFO 2668 --- [fintrack] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9441 ms
+2026-04-11T10:49:33.519+05:30  INFO 2668 --- [fintrack] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-11T10:49:34.053+05:30  INFO 2668 --- [fintrack] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58164e9a
+2026-04-11T10:49:34.060+05:30  INFO 2668 --- [fintrack] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-11T10:49:34.250+05:30  INFO 2668 --- [fintrack] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/fintrack (MySQL 8.0)
+2026-04-11T10:49:34.441+05:30  INFO 2668 --- [fintrack] [main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.120s)
+2026-04-11T10:49:34.468+05:30  INFO 2668 --- [fintrack] [main] o.f.core.internal.command.DbMigrate      : Current version of schema `fintrack`: 2
+2026-04-11T10:49:34.478+05:30  INFO 2668 --- [fintrack] [main] o.f.core.internal.command.DbMigrate      : Schema `fintrack` is up to date. No migration necessary.
+2026-04-11T10:49:34.732+05:30  INFO 2668 --- [fintrack] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-11T10:49:34.939+05:30  INFO 2668 --- [fintrack] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-04-11T10:49:35.062+05:30  INFO 2668 --- [fintrack] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-11T10:49:35.857+05:30  INFO 2668 --- [fintrack] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-11T10:49:36.052+05:30  WARN 2668 --- [fintrack] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-11T10:49:38.467+05:30  INFO 2668 --- [fintrack] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-11T10:49:38.720+05:30  INFO 2668 --- [fintrack] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T10:49:39.556+05:30  INFO 2668 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : ===== MAIL CONFIG CHECK =====
+2026-04-11T10:49:39.556+05:30  INFO 2668 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.username = 9e7973001@smtp-brevo.com
+2026-04-11T10:49:39.557+05:30  INFO 2668 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.password = ******
+2026-04-11T10:49:39.557+05:30  INFO 2668 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : spring.mail.properties.mail.smtp.from = dishumau@gmail.com
+2026-04-11T10:49:39.557+05:30  INFO 2668 --- [fintrack] [main] c.disha.fintrack.service.EmailService    : =============================
+2026-04-11T10:49:39.618+05:30  INFO 2668 --- [fintrack] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name appUserDetailsService
+2026-04-11T10:49:39.935+05:30  INFO 2668 --- [fintrack] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-11T10:49:42.290+05:30  WARN 2668 --- [fintrack] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-11T10:49:44.736+05:30  INFO 2668 --- [fintrack] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api/v1.0'
+2026-04-11T10:49:44.796+05:30  INFO 2668 --- [fintrack] [main] com.disha.fintrack.FintrackApplication   : Started FintrackApplication in 22.877 seconds (process running for 23.943)
+2026-04-11T10:57:38.309+05:30  INFO 2668 --- [fintrack] [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/api/v1.0]      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-11T10:57:38.316+05:30  INFO 2668 --- [fintrack] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-11T10:57:38.368+05:30  INFO 2668 --- [fintrack] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 50 ms
+2026-04-11T10:57:43.021+05:30  INFO 2668 --- [fintrack] [http-nio-8080-exec-6] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 2975 ms
+2026-04-11T11:05:36.630+05:30  INFO 2668 --- [fintrack] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-11T11:05:36.699+05:30  INFO 2668 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-11T11:05:36.863+05:30  INFO 2668 --- [fintrack] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
