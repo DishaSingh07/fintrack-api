@@ -41,3 +41,5 @@ build/
 
 ### Application logs ###
 *.log
+fintrack-application.log
+*.gz
